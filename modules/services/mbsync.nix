@@ -79,6 +79,7 @@ in {
     assertions = [
       (lib.hm.assertions.assertPlatform "services.mbsync" pkgs
         lib.platforms.linux)
+      (cfg.enable -> config.programs.mbsync.enable)
     ];
 
     systemd.user.services.mbsync = {
