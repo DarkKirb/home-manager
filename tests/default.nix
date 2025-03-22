@@ -61,45 +61,134 @@ let
       };
   in outer;
 
+  # TODO: figure out stdenv stubbing so we don't have to do this
   darwinBlacklist = let
     # List of packages that need to be scrubbed on Darwin
     # Packages are scrubbed in linux and expected in test output
     packagesToScrub = [
+      "aerc"
       "alot"
       "antidote"
+      "aria2"
       "atuin"
+      "autojump"
+      "bacon"
+      "bash"
       "bash-completion"
+      "bat"
+      "borgmatic"
+      "bottom"
+      "broot"
+      "browserpass"
+      "btop"
       "carapace"
+      "cava"
+      "cmus"
+      "comodoro"
+      "darcs"
+      "dircolors"
       "delta"
       "direnv"
+      "earthly"
+      "emacs"
       "espanso"
+      "fastfetch"
+      "feh"
+      "gallery-dl"
       "gh"
+      "gh-dash"
       "ghostty"
+      "git"
+      "git-cliff"
+      "git-credential-oauth"
+      "git-worktree-switcher"
       "gnupg"
+      "go"
       "granted"
+      "helix"
+      "himalaya"
+      "htop"
+      "hyfetch"
       "i3status"
+      "irssi"
+      "jujutsu"
+      "joplin-desktop"
+      "jqp"
+      "k9s"
+      "kakoune"
+      "khal"
+      "khard"
       "kitty"
+      "kubecolor"
+      "lapce"
+      "lazydocker"
+      "lazygit"
+      "ledger"
+      "less"
       "lesspipe"
+      "lf"
+      "lsd"
+      "lieer"
+      "mbsync"
+      "micro"
+      "mise"
+      "mpv"
       "mu"
+      "mujmap"
       "msmtp"
+      "ne"
+      "neomutt"
+      "neovide"
       "nheko"
       "nix"
       "nix-index"
       "nix-your-shell"
       "ollama"
+      "onlyoffice-desktopeditors"
       "openstackclient"
       "papis"
       "pay-respects"
+      "pet"
+      "pistol"
       "pls"
+      "poetry"
+      "powerline-go"
+      "pubs"
       "pyenv"
-      "sagemath"
+      "qcal"
+      "qutebrowser"
+      "ranger"
+      "rio"
+      "ripgrep"
+      "ruff"
+      "sage"
       "sapling"
+      "sbt"
       "scmpuff"
+      "senpai"
+      "sftpman"
+      "sioyek"
       "sm64ex"
+      "spotify-player"
+      "starship"
+      "taskwarrior"
+      "tealdeer"
+      "texlive"
       "thefuck"
+      "thunderbird"
+      "tmate"
+      "topgrade"
+      "translate-shell"
+      "vifm"
+      "vim-vint"
+      "vscode"
+      "watson"
       "wezterm"
+      "yazi"
       "yubikey-agent"
+      "zed-editor"
       "zellij"
+      "zk"
       "zplug"
       "zsh"
     ];
@@ -242,6 +331,7 @@ in import nmtSrc {
     ./modules/programs/kubecolor
     ./modules/programs/lapce
     ./modules/programs/ledger
+    ./modules/programs/lazydocker
     ./modules/programs/less
     ./modules/programs/lesspipe
     ./modules/programs/lf
@@ -267,6 +357,7 @@ in import nmtSrc {
     ./modules/programs/nnn
     ./modules/programs/nushell
     ./modules/programs/oh-my-posh
+    ./modules/programs/onlyoffice
     ./modules/programs/openstackclient
     ./modules/programs/pandoc
     ./modules/programs/papis
@@ -298,6 +389,7 @@ in import nmtSrc {
     ./modules/programs/starship
     ./modules/programs/taskwarrior
     ./modules/programs/tealdeer
+    ./modules/programs/tex-fmt
     ./modules/programs/texlive
     ./modules/programs/thefuck
     ./modules/programs/thunderbird
@@ -350,6 +442,7 @@ in import nmtSrc {
     ./modules/programs/bemenu
     ./modules/programs/boxxy
     ./modules/programs/cavalier
+    ./modules/programs/distrobox
     ./modules/programs/eww
     ./modules/programs/firefox
     ./modules/programs/firefox/firefox.nix
@@ -401,6 +494,7 @@ in import nmtSrc {
     ./modules/services/darkman
     ./modules/services/devilspie2
     ./modules/services/dropbox
+    ./modules/services/easyeffects
     ./modules/services/emacs
     ./modules/services/espanso
     ./modules/services/flameshot
@@ -413,10 +507,12 @@ in import nmtSrc {
     ./modules/services/home-manager-auto-upgrade
     ./modules/services/hypridle
     ./modules/services/hyprpaper
+    ./modules/services/hyprpolkitagent
     ./modules/services/imapnotify
     ./modules/services/kanshi
     ./modules/services/lieer
     ./modules/services/linux-wallpaperengine
+    ./modules/services/lxqt-policykit-agent
     ./modules/services/mopidy
     ./modules/services/mpd
     ./modules/services/mpd-mpris
@@ -432,6 +528,7 @@ in import nmtSrc {
     ./modules/services/picom
     ./modules/services/playerctld
     ./modules/services/podman-linux
+    ./modules/services/polkit-gnome
     ./modules/services/polybar
     ./modules/services/recoll
     ./modules/services/redshift-gammastep
@@ -442,6 +539,7 @@ in import nmtSrc {
     ./modules/services/swayidle
     ./modules/services/swaync
     ./modules/services/swayosd
+    ./modules/services/swww
     ./modules/services/sxhkd
     ./modules/services/syncthing/linux
     ./modules/services/tldr-update

@@ -2140,6 +2140,23 @@ in {
           you can use `lib.mkOrder` to specify the order of the content you want to insert.
         '';
       }
+      {
+        time = "2025-03-19T18:10:56+00:00";
+        condition = config.services.easyeffects.enable;
+        message = ''
+          The Easyeffects module now supports adding json formatted presets
+          under '$XDG_CONFIG_HOME/easyeffects/{input,output}/'.
+        '';
+      }
+      {
+        time = "2025-02-12T15:56:00+00:00";
+        message = ''
+          A new module is available: 'programs.tex-fmt'.
+
+          tex-fmt is a LaTeX formatter written in Rust.
+          See https://github.com/WGUNDERWOOD/tex-fmt for more information.
+        '';
+      }
     ];
   };
 }

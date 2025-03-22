@@ -12,13 +12,16 @@ in {
       main = {
         isDefault = true;
         id = 1;
-        bookmarks = [{
-          toolbar = true;
-          bookmarks = [{
-            name = "Home Manager";
-            url = "https://wiki.nixos.org/wiki/Home_Manager";
+        bookmarks = {
+          force = true;
+          settings = [{
+            toolbar = true;
+            bookmarks = [{
+              name = "Home Manager";
+              url = "https://wiki.nixos.org/wiki/Home_Manager";
+            }];
           }];
-        }];
+        };
         containers = {
           "shopping" = {
             icon = "circle";
@@ -27,11 +30,11 @@ in {
         };
         search = {
           force = true;
-          default = "Google";
-          privateDefault = "DuckDuckGo";
+          default = "google";
+          privateDefault = "ddg";
           engines = {
-            "Bing".metaData.hidden = true;
-            "Google".metaData.alias = "@g";
+            bing.metaData.hidden = true;
+            google.metaData.alias = "@g";
           };
         };
         settings = {

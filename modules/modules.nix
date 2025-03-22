@@ -88,6 +88,7 @@ let
     ./programs/dircolors.nix
     ./programs/direnv.nix
     ./programs/discocss.nix
+    ./programs/distrobox.nix
     ./programs/earthly.nix
     ./programs/eclipse.nix
     ./programs/emacs.nix
@@ -131,6 +132,7 @@ let
     ./programs/i3blocks.nix
     ./programs/i3status-rust.nix
     ./programs/i3status.nix
+    ./programs/iamb.nix
     ./programs/imv.nix
     ./programs/info.nix
     ./programs/ion.nix
@@ -152,6 +154,7 @@ let
     ./programs/kodi.nix
     ./programs/kubecolor.nix
     ./programs/lapce.nix
+    ./programs/lazydocker.nix
     ./programs/lazygit.nix
     ./programs/ledger.nix
     ./programs/less.nix
@@ -195,6 +198,7 @@ let
     ./programs/octant.nix
     ./programs/offlineimap.nix
     ./programs/oh-my-posh.nix
+    ./programs/onlyoffice.nix
     ./programs/opam.nix
     ./programs/openstackclient.nix
     ./programs/pandoc.nix
@@ -217,6 +221,7 @@ let
     ./programs/qutebrowser.nix
     ./programs/ranger.nix
     ./programs/rbw.nix
+    ./programs/rclone.nix
     ./programs/readline.nix
     ./programs/rio.nix
     ./programs/ripgrep.nix
@@ -245,6 +250,7 @@ let
     ./programs/tealdeer.nix
     ./programs/terminator.nix
     ./programs/termite.nix
+    ./programs/tex-fmt.nix
     ./programs/texlive.nix
     ./programs/thefuck.nix
     ./programs/thunderbird.nix
@@ -268,6 +274,7 @@ let
     ./programs/pywal.nix
     ./programs/rbenv.nix
     ./programs/watson.nix
+    ./programs/waylogout.nix
     ./programs/waybar.nix
     ./programs/wezterm.nix
     ./programs/wlogout.nix
@@ -332,16 +339,19 @@ let
     ./services/hound.nix
     ./services/hypridle.nix
     ./services/hyprpaper.nix
+    ./services/hyprpolkitagent.nix
     ./services/imapnotify.nix
     ./services/kanshi.nix
     ./services/kbfs.nix
     ./services/kdeconnect.nix
     ./services/keybase.nix
     ./services/keynav.nix
+    ./services/librespot.nix
     ./services/lieer.nix
     ./services/linux-wallpaperengine.nix
     ./services/listenbrainz-mpd.nix
     ./services/lorri.nix
+    ./services/lxqt-policykit-agent.nix
     ./services/macos-remap-keys
     ./services/mako.nix
     ./services/mbsync.nix
@@ -371,6 +381,7 @@ let
     ./services/playerctld.nix
     ./services/plex-mpv-shim.nix
     ./services/podman-linux
+    ./services/polkit-gnome.nix
     ./services/polybar.nix
     ./services/poweralertd.nix
     ./services/psd.nix
@@ -394,6 +405,7 @@ let
     ./services/swayidle.nix
     ./services/swaync.nix
     ./services/swayosd.nix
+    ./services/swww.nix
     ./services/sxhkd.nix
     ./services/syncthing.nix
     ./services/systembus-notify.nix
