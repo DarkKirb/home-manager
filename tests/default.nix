@@ -111,6 +111,7 @@ let
       "hyfetch"
       "i3status"
       "irssi"
+      "jankyborders"
       "jujutsu"
       "joplin-desktop"
       "jqp"
@@ -168,6 +169,7 @@ let
       "senpai"
       "sftpman"
       "sioyek"
+      "skhd"
       "sm64ex"
       "spotify-player"
       "starship"
@@ -418,9 +420,11 @@ in import nmtSrc {
     ./modules/services/espanso-darwin
     ./modules/services/git-sync-darwin
     ./modules/services/imapnotify-darwin
-    ./modules/services/nix-gc-darwin
+    ./modules/services/jankyborders
     ./modules/services/macos-remap-keys
+    ./modules/services/nix-gc-darwin
     ./modules/services/ollama/darwin
+    ./modules/services/skhd
     ./modules/services/yubikey-agent-darwin
     ./modules/targets-darwin
   ] ++ lib.optionals isLinux [

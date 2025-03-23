@@ -341,6 +341,7 @@ let
     ./services/hyprpaper.nix
     ./services/hyprpolkitagent.nix
     ./services/imapnotify.nix
+    ./services/jankyborders.nix
     ./services/kanshi.nix
     ./services/kbfs.nix
     ./services/kdeconnect.nix
@@ -397,6 +398,7 @@ let
     ./services/screen-locker.nix
     ./services/sctd.nix
     ./services/signaturepdf.nix
+    ./services/skhd.nix
     ./services/snixembed.nix
     ./services/spotifyd.nix
     ./services/ssh-agent.nix
