@@ -158,6 +158,8 @@ let
       })
     else
       (pkgs.wrapFirefox.override { config = bcfg; }) package { };
+
+  bookmarkTypes = import ./profiles/bookmark-types.nix { inherit lib; };
 in {
   options = setAttrByPath modulePath {
     enable = mkOption {
@@ -380,28 +382,32 @@ in {
 
           bookmarks = mkOption {
             type = (with types;
-              coercedTo (listOf anything) (bookmarks:
-                warn ''
-                  ${cfg.name} bookmarks have been refactored into a submodule that now explicitly require a 'force' option to be enabled.
+              coercedTo bookmarkTypes.settingsType (bookmarks:
+                if bookmarks != { } then
+                  warn ''
+                    ${cfg.name} bookmarks have been refactored into a submodule that now explicitly require a 'force' option to be enabled.
 
-                  Replace:
+                    Replace:
 
-                  ${moduleName}.profiles.${name}.bookmarks = [ ... ];
+                    ${moduleName}.profiles.${name}.bookmarks = [ ... ];
 
-                  With:
+                    With:
 
-                  ${moduleName}.profiles.${name}.bookmarks = {
+                    ${moduleName}.profiles.${name}.bookmarks = {
+                      force = true;
+                      settings = [ ... ];
+                    };
+                  '' {
                     force = true;
-                    settings = [ ... ];
-                  };
-                '' {
-                  force = true;
-                  settings = bookmarks;
-                }) (submodule ({ config, ... }:
-                  import ./profiles/bookmarks.nix {
-                    inherit config lib pkgs;
-                    modulePath = modulePath ++ [ "profiles" name "bookmarks" ];
-                  })));
+                    settings = bookmarks;
+                  }
+                else
+                  { }) (submodule ({ config, ... }:
+                    import ./profiles/bookmarks.nix {
+                      inherit config lib pkgs;
+                      modulePath = modulePath
+                        ++ [ "profiles" name "bookmarks" ];
+                    })));
             default = { };
             internal = !enableBookmarks;
             description = "Declarative bookmarks.";
@@ -650,11 +656,11 @@ in {
               message = ''
                 Using '${
                   lib.showAttrPath (modulePath
-                    ++ [ "profiles" profileName "extensions" "settings" ])
+                    ++ [ "profiles" config.name "extensions" "settings" ])
                 }' will override all previous extensions settings.
                 Enable '${
                   lib.showAttrPath (modulePath
-                    ++ [ "profiles" profileName "extensions" "force" ])
+                    ++ [ "profiles" config.name "extensions" "force" ])
                 }' to acknowledge this.
               '';
             }
