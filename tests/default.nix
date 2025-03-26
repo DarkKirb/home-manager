@@ -131,6 +131,7 @@ let
       "lsd"
       "lieer"
       "mbsync"
+      "mergiraf"
       "micro"
       "mise"
       "mpv"
@@ -341,6 +342,7 @@ in import nmtSrc {
     ./modules/programs/lieer
     ./modules/programs/man
     ./modules/programs/mbsync
+    ./modules/programs/mergiraf
     ./modules/programs/micro
     ./modules/programs/mise
     ./modules/programs/mods
@@ -377,6 +379,7 @@ in import nmtSrc {
     ./modules/programs/readline
     ./modules/programs/rio
     ./modules/programs/ripgrep
+    ./modules/programs/ripgrep-all
     ./modules/programs/ruff
     ./modules/programs/sagemath
     ./modules/programs/sapling
@@ -522,6 +525,7 @@ in import nmtSrc {
     ./modules/services/mpd
     ./modules/services/mpd-mpris
     ./modules/services/mpdris2
+    ./modules/services/mpdscribble
     ./modules/services/nix-gc
     ./modules/services/ollama/linux
     ./modules/services/osmscout-server

@@ -170,6 +170,7 @@ let
     ./programs/mbsync.nix
     ./programs/mcfly.nix
     ./programs/mercurial.nix
+    ./programs/mergiraf.nix
     ./programs/micro.nix
     ./programs/mise.nix
     ./programs/mods.nix
@@ -225,6 +226,7 @@ let
     ./programs/readline.nix
     ./programs/rio.nix
     ./programs/ripgrep.nix
+    ./programs/ripgrep-all.nix
     ./programs/rofi-pass.nix
     ./programs/rofi.nix
     ./programs/rtorrent.nix
@@ -361,6 +363,7 @@ let
     ./services/mopidy.nix
     ./services/mpd.nix
     ./services/mpdris2.nix
+    ./services/mpdscribble.nix
     ./services/mpd-discord-rpc.nix
     ./services/mpd-mpris.nix
     ./services/mpris-proxy.nix
