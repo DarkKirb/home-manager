@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
-
-with lib;
 let
+  inherit (lib) getExe optionalString mkIf mkOption types;
 
   cfg = config.programs.mcfly;
 
@@ -23,9 +22,7 @@ let
   fishIntegration = ''
     ${getExe pkgs.mcfly} init fish | source
   '' + optionalString cfg.fzf.enable ''
-    if status is-interactive
-      eval "$(${getExe pkgs.mcfly-fzf} init fish)"
-    end
+    eval "$(${getExe pkgs.mcfly-fzf} init fish)"
   '';
 
   zshIntegration = ''
@@ -40,23 +37,23 @@ in {
   meta.maintainers = [ ];
 
   imports = [
-    (mkChangedOptionModule # \
+    (lib.mkChangedOptionModule # \
       [ "programs" "mcfly" "enableFuzzySearch" ] # \
       [ "programs" "mcfly" "fuzzySearchFactor" ] # \
       (config:
         let
-          value =
-            getAttrFromPath [ "programs" "mcfly" "enableFuzzySearch" ] config;
+          value = lib.getAttrFromPath [ "programs" "mcfly" "enableFuzzySearch" ]
+            config;
         in if value then 2 else 0))
   ];
 
   options.programs.mcfly = {
-    enable = mkEnableOption "mcfly";
+    enable = lib.mkEnableOption "mcfly";
 
     settings = mkOption {
       type = tomlFormat.type;
       default = { };
-      example = literalExpression ''
+      example = lib.literalExpression ''
         {
           colors = {
             menubar = {
@@ -100,7 +97,7 @@ in {
       '';
     };
 
-    fzf.enable = mkEnableOption "McFly fzf integration";
+    fzf.enable = lib.mkEnableOption "McFly fzf integration";
 
     enableLightTheme = mkOption {
       default = false;
@@ -130,9 +127,10 @@ in {
       lib.hm.shell.mkZshIntegrationOption { inherit config; };
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config = mkIf cfg.enable (lib.mkMerge [
     {
-      home.packages = [ pkgs.mcfly ] ++ optional cfg.fzf.enable pkgs.mcfly-fzf;
+      home.packages = [ pkgs.mcfly ]
+        ++ lib.optional cfg.fzf.enable pkgs.mcfly-fzf;
 
       # Oddly enough, McFly expects this in the data path, not in config.
       xdg.dataFile."mcfly/config.toml" = mkIf (cfg.settings != { }) {
@@ -143,7 +141,8 @@ in {
 
       programs.zsh.initContent = mkIf cfg.enableZshIntegration zshIntegration;
 
-      programs.fish.shellInit = mkIf cfg.enableFishIntegration fishIntegration;
+      programs.fish.interactiveShellInit =
+        mkIf cfg.enableFishIntegration fishIntegration;
 
       home.sessionVariables.MCFLY_KEY_SCHEME = cfg.keyScheme;
 
