@@ -50,6 +50,8 @@ in {
   options.programs.pet = {
     enable = lib.mkEnableOption "pet";
 
+    package = lib.mkPackageOption pkgs "pet" { nullable = true; };
+
     settings = mkOption {
       type = format.type;
       default = { };
@@ -59,13 +61,10 @@ in {
       '';
     };
 
-    selectcmdPackage = mkOption {
-      type = types.package;
-      default = pkgs.fzf;
-      defaultText = lib.literalExpression "pkgs.fzf";
-      description = ''
-        The package needed for the {var}`settings.selectcmd`.
-      '';
+    selectcmdPackage = lib.mkPackageOption pkgs "fzf" {
+      nullable = true;
+      extraDescription =
+        "The package needed for the {var}`settings.selectcmd`.";
     };
 
     snippets = mkOption {
@@ -88,7 +87,8 @@ in {
     } else
       defaultGeneral;
 
-    home.packages = [ pkgs.pet cfg.selectcmdPackage ];
+    home.packages = lib.optional (cfg.package != null) cfg.package
+      ++ lib.optional (cfg.selectcmdPackage != null) cfg.selectcmdPackage;
 
     xdg.configFile = {
       "pet/config.toml".source = format.generate "config.toml"

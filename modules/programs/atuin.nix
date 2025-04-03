@@ -13,12 +13,7 @@ in {
   options.programs.atuin = {
     enable = lib.mkEnableOption "atuin";
 
-    package = mkOption {
-      type = types.package;
-      default = pkgs.atuin;
-      defaultText = lib.literalExpression "pkgs.atuin";
-      description = "The package to use for atuin.";
-    };
+    package = lib.mkPackageOption pkgs "atuin" { };
 
     enableBashIntegration = lib.hm.shell.mkBashIntegrationOption {
       inherit config;
@@ -122,17 +117,14 @@ in {
       '';
 
       programs.nushell = mkIf cfg.enableNushellIntegration {
-        extraEnv = ''
-          let atuin_cache = "${config.xdg.cacheHome}/atuin"
-          if not ($atuin_cache | path exists) {
-            mkdir $atuin_cache
-          }
-          ${
-            lib.getExe cfg.package
-          } init nu ${flagsStr} | save --force ${config.xdg.cacheHome}/atuin/init.nu
-        '';
         extraConfig = ''
-          source ${config.xdg.cacheHome}/atuin/init.nu
+          source ${
+            pkgs.runCommand "atuin-nushell-config.nu" {
+              nativeBuildInputs = [ pkgs.writableTmpDirAsHomeHook ];
+            } ''
+              ${lib.getExe cfg.package} init nu ${flagsStr} >> "$out"
+            ''
+          }
         '';
       };
     }
