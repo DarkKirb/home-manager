@@ -1,10 +1,23 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
-  inherit (lib) literalExpression mkIf mkOption mkRemovedOptionModule types;
+  inherit (lib)
+    literalExpression
+    mkIf
+    mkOption
+    mkRemovedOptionModule
+    types
+    ;
 
+  im = config.i18n.inputMethod;
   cfg = config.i18n.inputMethod.kime;
-in {
+in
+{
   imports = [
     (mkRemovedOptionModule [ "i18n" "inputMethod" "kime" "config" ] ''
       Please use 'i18n.inputMethod.kime.extraConfig' instead.
@@ -34,7 +47,7 @@ in {
     };
   };
 
-  config = mkIf (config.i18n.inputMethod.enabled == "kime") {
+  config = mkIf (im.enable && im.type == "kime") {
     i18n.inputMethod.package = pkgs.kime;
 
     home.sessionVariables = {
