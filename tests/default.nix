@@ -196,6 +196,7 @@ import nmtSrc {
       ./modules/programs/direnv
       ./modules/programs/earthly
       ./modules/programs/emacs
+      ./modules/programs/eza
       ./modules/programs/fastfetch
       ./modules/programs/feh
       ./modules/programs/fish
@@ -277,6 +278,7 @@ import nmtSrc {
       ./modules/programs/rio
       ./modules/programs/ripgrep
       ./modules/programs/ripgrep-all
+      ./modules/programs/rmpc
       ./modules/programs/ruff
       ./modules/programs/sagemath
       ./modules/programs/sapling
