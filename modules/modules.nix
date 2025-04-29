@@ -158,6 +158,7 @@ let
       ./programs/keychain.nix
       ./programs/khal.nix
       ./programs/khard.nix
+      ./programs/kickoff.nix
       ./programs/kitty.nix
       ./programs/kodi.nix
       ./programs/kubecolor.nix
@@ -183,6 +184,7 @@ let
       ./programs/mise.nix
       ./programs/mods.nix
       ./programs/mpv.nix
+      ./programs/mpvpaper.nix
       ./programs/mr.nix
       ./programs/msmtp.nix
       ./programs/mu.nix
