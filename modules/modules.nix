@@ -97,6 +97,7 @@ let
       ./programs/distrobox.nix
       ./programs/earthly.nix
       ./programs/eclipse.nix
+      ./programs/element-desktop.nix
       ./programs/emacs.nix
       ./programs/eww.nix
       ./programs/eza.nix
@@ -210,6 +211,7 @@ let
       ./programs/octant.nix
       ./programs/offlineimap.nix
       ./programs/oh-my-posh.nix
+      ./programs/onagre.nix
       ./programs/onedrive.nix
       ./programs/onlyoffice.nix
       ./programs/opam.nix
@@ -294,6 +296,7 @@ let
       ./programs/vinegar.nix
       ./programs/vscode.nix
       ./programs/vscode/haskell.nix
+      ./programs/visidata.nix
       ./programs/pywal.nix
       ./programs/rbenv.nix
       ./programs/wallust.nix
@@ -332,6 +335,7 @@ let
       ./services/cachix-agent.nix
       ./services/caffeine.nix
       ./services/cbatticon.nix
+      ./services/clipcat.nix
       ./services/cliphist.nix
       ./services/clipman.nix
       ./services/clipmenu.nix

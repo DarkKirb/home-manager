@@ -309,6 +309,7 @@ import nmtSrc {
       ./modules/programs/uv
       ./modules/programs/vifm
       ./modules/programs/vim-vint
+      ./modules/programs/visidata
       ./modules/programs/vscode
       ./modules/programs/wallust
       ./modules/programs/watson
@@ -326,6 +327,7 @@ import nmtSrc {
     ++ lib.optionals isDarwin [
       ./modules/launchd
       ./modules/programs/aerospace
+      ./modules/programs/element-desktop/darwin.nix
       ./modules/services/emacs-darwin
       ./modules/services/espanso-darwin
       ./modules/services/git-sync-darwin
@@ -359,6 +361,7 @@ import nmtSrc {
       ./modules/programs/boxxy
       ./modules/programs/cavalier
       ./modules/programs/distrobox
+      ./modules/programs/element-desktop/linux.nix
       ./modules/programs/eww
       ./modules/programs/firefox
       ./modules/programs/firefox/firefox.nix
@@ -382,6 +385,7 @@ import nmtSrc {
       ./modules/programs/mpvpaper
       ./modules/programs/ncmpcpp-linux
       ./modules/programs/nh
+      ./modules/programs/onagre
       ./modules/programs/onedrive
       ./modules/programs/pqiv
       ./modules/programs/rbw
@@ -406,6 +410,7 @@ import nmtSrc {
       ./modules/services/blanket
       ./modules/services/borgmatic
       ./modules/services/cachix-agent
+      ./modules/services/clipcat
       ./modules/services/cliphist
       ./modules/services/clipman
       ./modules/services/clipse
