@@ -6,7 +6,6 @@
 }:
 let
   inherit (lib)
-    types
     mkIf
     mkEnableOption
     mkPackageOption
@@ -16,8 +15,8 @@ let
   cfg = config.services.mako;
 
   generateConfig = lib.generators.toINIWithGlobalSection { };
-  settingsType = with types; attrsOf str;
-  criteriasType = types.attrsOf settingsType;
+  iniType = (pkgs.formats.ini { }).type;
+  iniAtomType = (pkgs.formats.ini { }).lib.types.atom;
 in
 {
   meta.maintainers = [ lib.maintainers.onny ];
@@ -27,14 +26,6 @@ in
       basePath = [
         "services"
         "mako"
-      ];
-
-      removedOptions = [
-        (lib.mkRemovedOptionModule [
-          "services"
-          "mako"
-          "extraConfig"
-        ] "Use services.mako.settings instead.")
       ];
 
       renamedOptions = [
@@ -70,14 +61,21 @@ in
         oldPrefix: newPrefix:
         map (option: lib.mkRenamedOptionModule (oldPrefix ++ [ option ]) (newPrefix ++ [ option ]));
     in
-    removedOptions
+    [
+      (lib.mkRemovedOptionModule [
+        "services"
+        "mako"
+        "extraConfig"
+      ] "Use services.mako.settings instead.")
+      (lib.mkRenamedOptionModule [ "services" "mako" "criterias" ] [ "services" "mako" "criteria" ])
+    ]
     ++ mkSettingsRenamedOptionModules basePath (basePath ++ [ "settings" ]) renamedOptions;
 
   options.services.mako = {
     enable = mkEnableOption "mako";
     package = mkPackageOption pkgs "mako" { };
     settings = mkOption {
-      type = settingsType;
+      type = lib.types.attrsOf iniAtomType;
       default = { };
       example = ''
         {
@@ -102,8 +100,8 @@ in
         here: <https://github.com/emersion/mako/blob/master/doc/mako.5.scd>.
       '';
     };
-    criterias = mkOption {
-      type = criteriasType;
+    criteria = mkOption {
+      type = iniType;
       default = { };
       example = {
         "actionable=true" = {
@@ -132,11 +130,11 @@ in
 
     home.packages = [ cfg.package ];
 
-    xdg.configFile."mako/config" = mkIf (cfg.settings != { } || cfg.criterias != { }) {
+    xdg.configFile."mako/config" = mkIf (cfg.settings != { } || cfg.criteria != { }) {
       onChange = "${cfg.package}/bin/makoctl reload || true";
       text = generateConfig {
         globalSection = cfg.settings;
-        sections = cfg.criterias;
+        sections = cfg.criteria;
       };
     };
   };
