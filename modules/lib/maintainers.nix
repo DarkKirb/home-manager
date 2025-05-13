@@ -18,6 +18,12 @@
     github = "abayomi185";
     githubId = 21103047;
   };
+  Aehmlo = {
+    name = "Alex";
+    email = "1622250+Aehmlo@users.noreply.github.com";
+    github = "Aehmlo";
+    githubId = 1622250;
+  };
   afresquet = {
     name = "Alvaro Fresquet";
     email = "alvarofresquet@gmail.com";
@@ -290,6 +296,12 @@
     email = "loic@loireynier.fr";
     github = "loicreynier";
     githubId = 88983487;
+  };
+  lowlevl = {
+    name = "maya_t";
+    email = "lowlevl@users.noreply.github.com";
+    github = "lowlevl";
+    githubId = 15341887;
   };
   LucasWagler = {
     name = "Lucas Wagler";
@@ -791,5 +803,11 @@
     email = "lunab08@proton.me";
     github = "miku4k";
     githubId = 89653242;
+  };
+  bikku = {
+    name = "Bikku";
+    email = "bikku+dev@slmail.me";
+    github = "b1kku";
+    githubId = 77858854;
   };
 }

@@ -41,11 +41,7 @@ let
       if lib.isDerivation value then scrubbedValue // newDrvAttrs else scrubbedValue
     else
       value;
-  scrubDerivations =
-    attrs:
-    let
-    in
-    lib.mapAttrs scrubDerivation attrs;
+  scrubDerivations = attrs: lib.mapAttrs scrubDerivation attrs;
 
   # Globally unscrub a few selected packages that are used by a wide selection of tests.
   whitelist =
@@ -261,6 +257,7 @@ import nmtSrc {
       ./modules/programs/nix-init
       ./modules/programs/nix-your-shell
       ./modules/programs/nnn
+      ./modules/programs/numbat
       ./modules/programs/nushell
       ./modules/programs/oh-my-posh
       ./modules/programs/onlyoffice
@@ -317,6 +314,7 @@ import nmtSrc {
       ./modules/programs/vscode
       ./modules/programs/wallust
       ./modules/programs/watson
+      ./modules/programs/waveterm
       ./modules/programs/wezterm
       ./modules/programs/yazi
       ./modules/programs/zed-editor
@@ -373,6 +371,7 @@ import nmtSrc {
       ./modules/programs/getmail
       ./modules/programs/gnome-shell
       ./modules/programs/gnome-terminal
+      ./modules/programs/halloy
       ./modules/programs/hexchat
       ./modules/programs/hyprlock
       ./modules/programs/i3bar-river
@@ -382,6 +381,7 @@ import nmtSrc {
       ./modules/programs/kodi
       ./modules/programs/kickoff
       ./modules/programs/looking-glass-client
+      ./modules/programs/lutris
       ./modules/programs/mangohud
       ./modules/programs/mpvpaper
       ./modules/programs/ncmpcpp-linux
@@ -401,6 +401,7 @@ import nmtSrc {
       ./modules/programs/vesktop
       ./modules/programs/vinegar
       ./modules/programs/waybar
+      ./modules/programs/wayprompt
       ./modules/programs/wlogout
       ./modules/programs/wofi
       ./modules/programs/xmobar
