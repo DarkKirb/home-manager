@@ -79,7 +79,7 @@ let
       adwaita-qt6
     ];
 
-    breeze = libsForQt5.breeze-qt5;
+    breeze = kdePackages.breeze;
 
     kvantum = [
       libsForQt5.qtstyleplugin-kvantum
