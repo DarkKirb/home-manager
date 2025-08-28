@@ -23,11 +23,6 @@ let
       qt6Packages.qt6gtk2
     ];
     kde = [
-      libsForQt5.kio
-      libsForQt5.plasma-integration
-      libsForQt5.systemsettings
-    ];
-    kde6 = [
       kdePackages.kio
       kdePackages.plasma-integration
       kdePackages.systemsettings
@@ -79,7 +74,7 @@ let
       adwaita-qt6
     ];
 
-    breeze = libsForQt5.breeze-qt5;
+    breeze = kdePackages.breeze;
 
     kvantum = [
       libsForQt5.qtstyleplugin-kvantum
